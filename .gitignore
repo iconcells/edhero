@@ -8,3 +8,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# commit comment file and ~ backup files
+bleh.txt
+*~

@@ -30,14 +30,32 @@
 		*************************************
 		*************************************
 		-->
-		<script type="text/javascript">
-      StackMob.init({
-        appName : "",
-        clientSubdomain : "",
-        publicKey : "",
-        apiVersion : 0
-      });
-		</script>
+
+<script type="text/javascript">
+  StackMob.init({
+    appName: "edhero",
+    clientSubdomain: "kennethng",
+    publicKey: "5f234f42-0b95-410e-8b53-58b67042f340",
+    apiVersion: 0
+  });
+</script>
+
+<script type="text/javascript">
+function createuser(){
+  //Creating a user, but this time with a callback.
+  var user = new StackMob.User({ username: 'Bill Watterson', password: 'weirdosfromanotherplanet', profession: 'cartoonist'  });
+  user.create({
+    //After StackMob successfully saves "Bill Watterson", print out the result
+    success: function(model) {
+      //Print out "Bill Watterson: cartoonist"
+      console.debug(model.get('username') + ': ' + model.get('profession'));
+    },
+    error: function(model, response) {
+      console.debug("curses! we have failed, Hobbes!");
+    }
+  });
+}
+</script>
 		<!--
 		*************************************
 		*************************************
@@ -129,7 +147,11 @@
 		<link rel="stylesheet" href="styles/index.css" />
 	</head>
 	<body>
-		<h1>Congratulations!</h1>
+
+
+<input type="button" value="create user" onclick='createuser();'>
+		
+	<h1>See above creating user!</h1>
 		<p id="runmessage">
 			Don't forget to <a href="https://stackmob.com/platform/help/tutorials/html5_js_sdk" target="_blank">initialize the JS SDK</a>!
 			<br/>
